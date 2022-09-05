@@ -1,0 +1,152 @@
+version: '3.1'
+intents:
+- affirm
+- ask_for_workout
+- bot_challenge
+- deny
+- exercice_inform
+- goodbye
+- greet
+- inform_first_name
+- inform_last_name
+- inform_user_age
+- inform_user_height
+- inform_user_sex
+- inform_user_weight
+- thanks
+- what_part_day
+- finish_workout
+- feeling_bad
+- feeling_good
+- help
+entities:
+- first_name
+- last_name
+- user_age
+- user_height
+- user_sex
+- user_weight
+- muscular_group
+slots:
+  muscular_group:
+    type: categorical
+    values:
+    - peito
+    - braços
+    - costas
+    - pernas
+    - ombros
+    mappings:
+    - type: from_entity
+      entity: muscular_group
+    influence_conversation: false
+  first_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: first_name
+  last_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: last_name
+  user_sex:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: user_sex
+  user_age:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: user_age
+  user_weight:
+    type: float
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: user_weight
+  user_height:
+    type: float
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: user_height
+responses:
+  utter_greet:
+  - text: Olá! Tudo bem? Sou o Diogo. Sou Personal Trainer e estou disponível para te ajudar a melhorar a tua forma física. Estás interessad@?
+  utter_goodbye:
+  - text: Então, adeus!
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_muscle_group:
+  - text: E quanto aos teus objetivos, que grupo muscular queres treinar? (peito, braços, pernas, costas, ombros)
+  utter_deny_workout:
+  - text: Tenho pena! Se mudares de ideias, não hesites em chamar-me.
+  utter_can_I_help:
+  - text: Posso ajudar-te em mais alguma coisa?
+  utter_user_slots:
+  - text: Deixa-me confirmar então todos os teus dados. Chamas-te {first_name} {last_name}, tens {user_age} anos, és do sexo {user_sex}, pesas {user_weight} kg e medes {user_height} m.
+  utter_submit:
+  - text: Pronto, já tenho toda a informação que preciso!
+  utter_ask_first_name:
+  - text: Boa! Então para começar quero perceber se já estás registad@. Então...como te chamas (primeiro nome)?
+  utter_what_is_your_name:
+  - text: Preciso só de saber o teu primeiro nome para te dar essa informação. Podes dizer-me?
+  utter_ask_last_name:
+  - text: E qual é o teu último nome?
+  utter_ask_user_age:
+  - text: Ainda não estás registad@ aqui no ginásio, por isso preciso de preencher a tua ficha. Podes dizer-me a tua idade?
+  utter_ask_user_sex:
+  - text: És do sexo masculino ou feminino?
+  utter_ask_user_weight:
+  - text: Quanto pesas (kg)?
+  utter_ask_user_height:
+  - text: E para acabar...quanto medes(m)?
+  utter_thanks:
+  - text: De nada, estou sempre disponível para ajudar!
+  utter_give_help:
+  - text: O que precisas em concreto?
+  utter_do_you_feel:
+  - text: Como te sentiste?
+  utter_feel_good:
+  - text: Isso é bom. Vamos continuar a trabalhar estás no bom caminho! Agora é hora do descanso.
+  utter_feel_bad:
+  - text: Estás a começar, é normal! O próximo vai correr melhor. Agora é hora do descanso.
+  utter_go_work:
+  - text: Vamos lá então!
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- action_goodbye_user
+- action_list_workout
+- action_muscular_group
+- addition_simple_user_form
+- inform_better_time_workout
+- utter_ask_first_name
+- utter_ask_last_name
+- utter_ask_muscle_group
+- utter_ask_user_age
+- utter_ask_user_height
+- utter_ask_user_sex
+- utter_ask_user_weight
+- utter_greet
+- utter_iamabot
+- utter_submit
+- utter_user_slots
+- validate_simple_user_form
+- action_default_fallback
+forms:
+  simple_user_form:
+    required_slots:
+    - first_name
+    - last_name
+    - user_age
+    - user_sex
+    - user_weight
+    - user_height

@@ -1,0 +1,426 @@
+version: "3.1"
+
+stories:
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: action_goodbye_user
+
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+  - action: utter_can_I_help
+
+
+- story: inform_muscular_to_workout
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+
+- story: inform_not_workout
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: deny
+  - action: utter_deny_workout
+  - action: utter_can_I_help
+
+- story: ask_for_help
+  steps:
+  - action: utter_can_I_help
+  - intent: affirm
+  - action: utter_give_help
+
+- story: not_ask_for_help
+  steps:
+  - action: utter_can_I_help
+  - intent: deny
+  - action: action_goodbye_user
+
+
+- story: know_what_part_of_day_work_better
+  steps:
+  - intent: what_part_day
+  - action: inform_better_time_workout
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: Maria
+  - slot_was_set:
+    - first_name: Maria
+  - slot_was_set:
+    - requested_slot: last_name
+  - slot_was_set:
+    - last_name: Amorim
+  - slot_was_set:
+    - last_name: Amorim
+  - slot_was_set:
+    - requested_slot: user_age
+  - slot_was_set:
+    - user_age: '23'
+  - slot_was_set:
+    - user_age: '23'
+  - slot_was_set:
+    - requested_slot: user_sex
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - intent: inform_first_name
+    entities:
+    - first_name: João
+
+- story: interactive_story_3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: João
+  - slot_was_set:
+    - first_name: João
+  - slot_was_set:
+    - requested_slot: last_name
+  - intent: inform_last_name
+    entities:
+    - last_name: Alves
+
+- story: interactive_story_4
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: interactive_story_5
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: Ana
+  - slot_was_set:
+    - first_name: Ana
+  - slot_was_set:
+    - requested_slot: last_name
+  - slot_was_set:
+    - last_name: Silva
+  - slot_was_set:
+    - last_name: Silva
+  - slot_was_set:
+    - requested_slot: user_age
+  - slot_was_set:
+    - user_age: '45'
+  - slot_was_set:
+    - user_age: '45'
+  - slot_was_set:
+    - requested_slot: user_sex
+  - slot_was_set:
+    - user_sex: feminino
+  - slot_was_set:
+    - user_sex: feminino
+  - slot_was_set:
+    - requested_slot: user_weight
+  - intent: inform_user_weight
+    entities:
+    - user_weight: '67'
+
+- story: interactive_story_6
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: Maria
+  - slot_was_set:
+    - first_name: Maria
+  - slot_was_set:
+    - requested_slot: last_name
+  - slot_was_set:
+    - last_name: Alves
+  - slot_was_set:
+    - last_name: Alves
+  - slot_was_set:
+    - requested_slot: user_age
+  - slot_was_set:
+    - user_age: '56'
+  - slot_was_set:
+    - user_age: '56'
+  - slot_was_set:
+    - requested_slot: user_sex
+  - slot_was_set:
+    - user_sex: feminino
+  - slot_was_set:
+    - user_sex: feminino
+  - slot_was_set:
+    - requested_slot: user_weight
+  - slot_was_set:
+    - user_weight: '80'
+  - slot_was_set:
+    - user_weight: '80'
+  - slot_was_set:
+    - requested_slot: user_height
+  - slot_was_set:
+    - user_height: '1.67'
+  - slot_was_set:
+    - user_height: '1.67'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_user_slots
+  - action: utter_submit
+  - action: validate_simple_user_form
+  - action: addition_simple_user_form
+  - action: utter_ask_muscle_group
+  - intent: exercice_inform
+    entities:
+    - muscular_group: braços
+  - slot_was_set:
+    - muscular_group: braços
+  - action: action_list_workout
+
+- story: interactive_story_7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+
+- story: interactive_story_8
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - intent: inform_first_name
+    entities:
+    - first_name: Paulo
+
+- story: interactive_story_9
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: João
+  - slot_was_set:
+    - first_name: João
+  - slot_was_set:
+    - requested_slot: last_name
+  - intent: inform_last_name
+    entities:
+    - last_name: Carvalho
+
+- story: interactive_story_11
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - intent: inform_first_name
+    entities:
+    - first_name: Diogo
+
+- story: interactive_story_12
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: Ana
+  - slot_was_set:
+    - first_name: Ana
+  - slot_was_set:
+    - requested_slot: last_name
+  - slot_was_set:
+    - last_name: Santos
+  - slot_was_set:
+    - last_name: Santos
+  - slot_was_set:
+    - requested_slot: user_age
+  - intent: inform_user_age
+    entities:
+    - user_age: '21'
+
+- story: interactive_story_13
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+  - slot_was_set:
+    - first_name: Filipe
+  - slot_was_set:
+    - first_name: Filipe
+  - slot_was_set:
+    - requested_slot: last_name
+  - slot_was_set:
+    - last_name: Carvalho
+  - slot_was_set:
+    - last_name: Carvalho
+  - slot_was_set:
+    - requested_slot: user_age
+  - slot_was_set:
+    - user_age: '17'
+  - slot_was_set:
+    - user_age: '17'
+  - slot_was_set:
+    - requested_slot: user_sex
+  - slot_was_set:
+    - user_sex: masculino
+  - slot_was_set:
+    - user_sex: masculino
+  - slot_was_set:
+    - requested_slot: user_weight
+  - slot_was_set:
+    - user_weight: '78'
+  - slot_was_set:
+    - user_weight: '78'
+  - slot_was_set:
+    - requested_slot: user_height
+  - slot_was_set:
+    - user_height: '1.80'
+  - slot_was_set:
+    - user_height: '1.80'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_user_slots
+  - action: utter_submit
+  - action: validate_simple_user_form
+  - action: addition_simple_user_form
+  - action: utter_ask_muscle_group
+  - intent: exercice_inform
+    entities:
+    - muscular_group: braços
+  - slot_was_set:
+    - muscular_group: braços
+  - action: action_list_workout
+
+
+
+- story: know_what_part_of_day_work_better_2
+  steps:
+  - intent: what_part_day
+  - action: inform_better_time_workout
+  - intent: inform_first_name
+    entities:
+    - first_name: Lara
+  - slot_was_set:
+    - first_name: Lara
+  - action: inform_better_time_workout
+
+- story: know_what_part_of_day_work_better_3
+  steps:
+  - intent: what_part_day
+  - action: inform_better_time_workout
+  - intent: inform_first_name
+  - action: inform_better_time_workout
+
+- story: know_what_part_of_day_work_better_4
+  steps:
+  - intent: what_part_day
+  - action: inform_better_time_workout
+  - intent: inform_first_name
+    entities:
+    - first_name: Mariana
+  - slot_was_set:
+    - first_name: Mariana
+  - action: inform_better_time_workout
+
+- story: know_what_part_of_day_work_better_5
+  steps:
+  - intent: inform_first_name
+    entities:
+    - first_name: Tiago
+  - slot_was_set:
+    - first_name: Tiago
+- story: interactive_story_14
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+  - slot_was_set:
+    - requested_slot: first_name
+
+- story: how_do_you_feel_good
+  steps:
+    - action: action_list_workout
+    - intent: finish_workout
+    - action: utter_do_you_feel
+    - intent: feeling_good
+    - action: utter_feel_good
+    - action: utter_goodbye
+
+- story: how_do_you_feel_bad
+  steps:
+    - action: action_list_workout
+    - intent: finish_workout
+    - action: utter_do_you_feel
+    - intent: feeling_bad
+    - action: utter_feel_bad
+    - action: utter_goodbye
+
+- story: help_user
+  steps:
+    - intent: help
+    - action: utter_give_help
+- story: go_work
+  steps:
+    - intent: go_work
+    - action: utter_go_work

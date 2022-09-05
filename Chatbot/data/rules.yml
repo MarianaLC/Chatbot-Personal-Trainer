@@ -1,0 +1,46 @@
+version: "3.1"
+
+rules:
+
+- rule: Say hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_goodbye_user
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+- rule: Activate User Form
+  steps:
+  - action: utter_greet
+  - intent: affirm
+  - action: simple_user_form
+  - active_loop: simple_user_form
+
+- rule: Submit User Form
+  condition:
+  - active_loop: simple_user_form
+  steps:
+  - action: simple_user_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_user_slots
+  - action: utter_submit
+  - action: validate_simple_user_form
+  - action: addition_simple_user_form
+  - action: utter_ask_muscle_group
+
+
+- rule: Implementation of the simple-Fallback
+  steps:
+  - intent: nlu_fallback
+  - action: action_default_fallback

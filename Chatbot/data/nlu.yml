@@ -1,0 +1,259 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Olá
+    - Boa tarde
+    - Bom dia
+    - Oi
+    - Hello
+    - Hi
+    - Boa noite
+    - olá
+    - oi
+- intent: goodbye
+  examples: |
+    - Adeus
+    - Xau
+    - Até já
+    - Até logo
+- intent: affirm
+  examples: |
+    - ya
+    - sim
+    - ok
+    - claro
+    - parece-me bem
+    - está bem
+    - pode ser
+    - quero
+    - sei
+    - estou
+    - óbvio
+    - yes
+- intent: deny
+  examples: |
+    - não
+    - nup
+    - no
+    - nunca
+    - acho que não
+    - não gosto
+    - não me parece
+    - nem pensar
+    - nem por isso
+- intent: thanks
+  examples: |
+    - Obrigada
+    - Ok, obrigada
+    - Muito obrigada
+    - Mil obrigadas
+- intent: bot_challenge
+  examples: |
+    - como te chamas?
+    - quem és?
+    - és um bot?
+    - és um humano?
+    - estou a falar com um bot?
+    - estou a falar com um humano?
+- intent: exercice_inform
+  examples: |
+    - [peito](muscular_group)
+    - [braços](muscular_group)
+    - [costas](muscular_group)
+    - [pernas](muscular_group)
+    - [ombros](muscular_group)
+- intent: ask_for_workout
+  examples: |
+    - Queria um treino personalizado.
+    - Queria treinar contigo
+    - Posso treinar contigo?
+    - Podes fazer-me um treino?
+    - Não sei o que treinar.
+    - quero um treino personalizado
+    - quero treino personalizado
+- intent: inform_first_name
+  examples: |
+    - Chamo-me [Lara](first_name)
+    - Eu sou a [Mariana](first_name)
+    - O meu nome é [Lara](first_name)
+    - [Lara](first_name)
+    - [Tiago](first_name)
+    - [Luis](first_name)
+    - [Claudia](first_name)
+    - [Maria](first_name)
+    - [Ana](first_name)
+    - [Paulo](first_name)
+    - [Filipe](first_name)
+    - [Diogo](first_name)
+    - [Filipe][{"entity": "first_name"}, {"entity": "first_name"}]
+    - [Mariana](first_name)
+    - [Alice](first_name)
+- intent: inform_last_name
+  examples: |
+    - O meu último nome é [Vaz](last_name)
+    - O meu último nome é [Lindo](last_name)
+    - O meu apelido é [Novais](last_name)
+    - [Vaz](last_name)
+    - [Novais](last_name)
+    - [Silva](last_name)
+    - [Martins](last_name)
+    - [Amorim](last_name)
+    - [Santos](last_name)
+    - [Carvalho](last_name)
+    - [Lourenço](last_name)
+    - [Santos][{"entity": "last_name"}, {"entity": "last_name"}]
+    - [Carvalho][{"entity": "last_name"}, {"entity": "last_name"}]
+- intent: inform_user_sex
+  examples: |
+    - [masculino](user_sex)
+    - [feminino](user_sex)
+    - Sou do sexo [masculino](user_sex)
+    - Sou do sexo [feminino](user_sex)
+- intent: inform_user_age
+  examples: |
+    - Tenho [5](user_age) anos
+    - Tenho [10](user_age)
+    - [12](user_age) anos
+    - [45](user_age)
+    - [23](user_age)
+    - [23](user_age) anos
+    - [56](user_age) anos
+    - [21](user_age)
+    - [17](user_age) anos
+- intent: inform_user_weight
+  examples: |
+    - Peso [50](user_weight) kg
+    - Peso [45](user_weight)
+    - [56](user_weight)kg
+    - [56](user_weight)
+    - [59](user_weight) kg
+    - [78](user_weight) kilos
+    - Peso [59](user_weight) kg
+    - [57](user_weight) kg
+    - [57](user_weight)kg
+    - [67](user_weight)
+    - [80](user_weight) kg
+    - [78](user_weight) kg
+- intent: inform_user_height
+  examples: |
+    - Meço [1.63](user_height)m
+    - [1.73](user_height)m
+    - [1.56](user_height)
+    - Meço [1.56](user_height) m
+    - [1.80](user_height) metros
+    - [1.63](user_height)m
+    - [1.67](user_height) m
+    - [1.80](user_height)
+- intent: what_part_day
+  examples: |
+    - Treino melhor de tarde ou de manhã?
+    - Treino melhor de manhã ou de tarde?
+    - Em que parte do dia treino melhor?
+    - Em que parte do dia o meu desempenho é melhor?
+    - Tenho melhor desempenho de manhã ou de tarde?
+    - Quando treino melhor?
+    - Quando treino melhor?
+    - Quando devo treinar?
+- lookup: first_name
+  examples: |
+    - Inês
+    - Carolina
+    - Filipe
+    - Diogo
+    - João
+    - Andreia
+    - Diana
+    - Sofia
+    - Francisco
+    - Rita
+    - Catarina
+    - Diogo
+    - Francisca
+    - Gabriel
+    - Márcia
+    - Pedro
+    - Morgana
+    - Susana
+- lookup: last_name
+  examples: |
+    - Pereira
+    - Carvalho
+    - Lopes
+    - Santos
+    - Braga
+    - Oliveira
+    - Braz
+    - Pimenta
+    - Sousa
+    - Machado
+    - Bettencourt
+    - Bizarro
+    - Branco
+    - Parente
+    - Ferreira
+    - Marcondes
+    - Pinto
+
+- intent: finish_workout
+  examples: |
+    - Acabei
+    - Já terminei
+    - Terminei
+    - Conclui
+    - Dei por concluido
+    - Acabou
+    - fim
+    - dei por terminado
+    - Já acabei
+
+- intent: feeling_good
+  examples: |
+    - Senti-me bem
+    - Bem
+    - Muito bem
+    - Super Bem
+    - Forte
+    - Em forma
+    - Ótimo
+    - Ok
+    - Controlado
+    - Motivado
+    - Com garra
+    - Com força
+    - Durido
+
+
+- intent: feeling_bad
+  examples: |
+    - Senti-me mal
+    - mal
+    - Muito mal
+    - Mais ao menos
+    - Fraco
+    - Fraca
+    - Cansada
+    - Cansado
+    - Miserável
+    - Não muito bem
+    - Desgastado
+    - Fatigado
+    - Partido
+
+
+- intent: help
+  examples: |
+    - Precisava de ajuda
+    - Ajuda-me
+    - Podes ajudar-me?
+    - Ajuda!
+    - Preciso de uma coisa
+    - Consegues me tirar uma dúvida?
+
+- intent: go_work
+  examples: |
+    - Vou treinar
+    - Vamos lá treinar
+    - Vou começar
+    - Vou começar a treinar
+    - Posso começar?
